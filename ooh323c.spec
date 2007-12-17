@@ -11,7 +11,6 @@ URL:		http://www.obj-sys.com/open/
 Source0:	http://switch.dl.sourceforge.net/sourceforge/ooh323c/%{name}-%{version}.tar.bz2
 BuildRequires:	autoconf2.5
 BuildRequires:	libtool
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 Objective Systems Open H.323 for C is a simple H.323 protocol stack. It
