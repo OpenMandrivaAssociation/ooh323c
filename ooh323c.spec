@@ -4,7 +4,7 @@
 Summary:	Objective Systems Open H.323 library
 Name:		ooh323c
 Version:	0.8.2
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		System/Libraries
 License:	GPL
 URL:		http://www.obj-sys.com/open/
