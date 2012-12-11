@@ -4,14 +4,13 @@
 Summary:	Objective Systems Open H.323 library
 Name:		ooh323c
 Version:	0.8.2
-Release:	%mkrel 5
+Release:	5
 Group:		System/Libraries
 License:	GPL
 URL:		http://www.obj-sys.com/open/
 Source0:	http://switch.dl.sourceforge.net/sourceforge/ooh323c/%{name}-%{version}.tar.bz2
 BuildRequires:	autoconf2.5
 BuildRequires:	libtool
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 Objective Systems Open H.323 for C is a simple H.323 protocol stack. It
@@ -32,8 +31,8 @@ types (including embedded).
 %package -n	%{libname}-devel
 Summary:	Static library and header files for the ooh323c library
 Group:		Development/C
-Provides:	%{name}-devel = %{version}
-Provides:	lib%{name}-devel = %{version}
+Provides:	%{name}-devel = %{EVRD}
+Provides:	lib%{name}-devel = %{EVRD}
 Requires:	%{libname} = %{version}
 
 %description -n	%{libname}-devel
@@ -45,8 +44,7 @@ types (including embedded).
 This package contains the static ooh323c library and its header files.
 
 %prep
-
-%setup -q -n %{name}-%{version}
+%setup -q
 
 find . -type d -perm 0700 -exec chmod 755 {} \;
 find . -type f -perm 0555 -exec chmod 755 {} \;
@@ -57,38 +55,50 @@ for i in `find . -type d -name CVS`  `find . -type d -name .svn` `find . -type f
 done
 
 %build
-
 %configure2_5x
 
 %make
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
 %makeinstall_std
 
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
-
 %files -n %{libname}
-%defattr(-,root,root)
 %doc COPYING ChangeLog README
 %{_libdir}/*.so.*
 
 %files -n %{libname}-devel
-%defattr(-,root,root)
 %doc doc/*
 %{_includedir}/*.h
 %{_libdir}/*.so
 %{_libdir}/*.a
-%{_libdir}/*.la
 
+
+
+
+%changelog
+* Fri Sep 04 2009 Thierry Vignaud <tvignaud@mandriva.com> 0.8.2-4mdv2010.0
++ Revision: 430204
+- rebuild
+
+* Wed Jul 30 2008 Thierry Vignaud <tvignaud@mandriva.com> 0.8.2-3mdv2009.0
++ Revision: 254542
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+* Fri Dec 21 2007 Olivier Blin <oblin@mandriva.com> 0.8.2-1mdv2008.1
++ Revision: 136634
+- restore BuildRoot
+
+  + Thierry Vignaud <tvignaud@mandriva.com>
+    - kill re-definition of %%buildroot on Pixel's request
+
+
+* Mon Dec 18 2006 Oden Eriksson <oeriksson@mandriva.com> 0.8.2-1mdv2007.0
++ Revision: 98557
+- Import ooh323c
+
+* Mon Dec 18 2006 Oden Eriksson <oeriksson@mandriva.com> 0.8.2-1mdv2007.1
+- initial Mandriva package
 
