@@ -7,7 +7,7 @@ Version:	0.8.2
 Release:	6
 Group:		System/Libraries
 License:	GPL
-URL:		http://www.obj-sys.com/open/
+URL:		https://www.obj-sys.com/open/
 Source0:	http://switch.dl.sourceforge.net/sourceforge/ooh323c/%{name}-%{version}.tar.bz2
 BuildRequires:	autoconf2.5
 BuildRequires:	libtool
