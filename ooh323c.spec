@@ -9,6 +9,10 @@ Group:		System/Libraries
 License:	GPL
 URL:		https://www.obj-sys.com/open/
 Source0:	http://switch.dl.sourceforge.net/sourceforge/ooh323c/%{name}-%{version}.tar.bz2
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	autoconf2.5
 BuildRequires:	libtool
 
